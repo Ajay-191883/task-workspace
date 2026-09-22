@@ -1,0 +1,18 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: workspace_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      # We lock down the database with credentials from day one
+      MONGO_INITDB_ROOT_USERNAME: ajaysuper11
+      MONGO_INITDB_ROOT_PASSWORD: iwlWDqhkYDEjzbyB
+      MONGO_INITDB_DATABASE: task_workspace
+    volumes:
+      # This ensures database data survives even if the container is destroyed
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
